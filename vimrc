@@ -34,6 +34,8 @@ Plugin 'https://github.com/rhysd/vim-clang-format.git'
 
 Plugin 'https://github.com/tell-k/vim-autopep8.git'
 
+Plugin 'rust-lang/rust.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 "
@@ -81,6 +83,10 @@ hi clear SpellRare
 hi clear SpellCap
 hi clear SpellLocal
 hi SpellBad cterm=underline
-map <C-x> :ClangFormat
-map <C-z> :Autopep8
+
+" Code format
+nnoremap <C-x> :ClangFormat
+autocmd FileType python nnoremap <C-x> :Autopep8
+autocmd FileType rust nnoremap <C-x> :RustFmt
+
 set matchpairs+=<:>
